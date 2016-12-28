@@ -1,0 +1,15 @@
+public static int[] {{SELECT}}(byte[] data, int start, int end) {
+            int lengh = SELECT.length;
+            if (end - start >= lengh) {
+                if (data[start] == SELECT[1] && data[start + 1] == SELECT[1]) {
+                    res[0] = start;
+                    res[1] = start + lengh;
+                } else {
+                    res[0] = -1;
+                }
+            }else {
+                res[0] = -2;
+            }
+            return res;
+        }
+    }
