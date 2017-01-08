@@ -7,6 +7,25 @@
     <groupId>groupId</groupId>
     <artifactId>playWithPL</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    
+<repositories>
+    <repository>
+        <id>nexus-aliyun</id>
+        <name>Nexus aliyun</name>
+        <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+    </repository>
+</repositories>
+  <dependencies>
+      <!-- https://mvnrepository.com/artifact/com.github.jknack/handlebars-maven-plugin -->
+      <dependency>
+          <groupId>com.github.jknack</groupId>
+          <artifactId>handlebars-maven-plugin</artifactId>
+          <version>1.1.0</version>
+      </dependency>
+      <dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>1.16.12</version>
+          <scope>provided</scope>
+      </dependency>
+  </dependencies>
 </project>

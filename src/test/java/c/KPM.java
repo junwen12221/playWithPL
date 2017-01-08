@@ -1,6 +1,7 @@
+package c;
+
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.function.Function;
 
 public class KPM {
 
@@ -97,10 +98,10 @@ public class KPM {
 
     public static void main(String[] args) {
 //        Function<String, byte[]> encode = String::getBytes;
-//        Match match = KPM.of("6", StandardCharsets.UTF_8);
-//        Match space = KPM.of(" ", StandardCharsets.UTF_8);
-//        int res = match.indexOf("select d".getBytes(), 5);
-//        System.out.println(res);
+        Match match = KPM.of("d", StandardCharsets.UTF_8);
+        Match space = KPM.of(" ", StandardCharsets.UTF_8);
+        int res = match.indexOf("select d from b".getBytes(), 4);
+        System.out.println(res);
 
     }
 }

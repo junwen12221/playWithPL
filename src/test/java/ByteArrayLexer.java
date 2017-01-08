@@ -1,14 +1,11 @@
-import com.google.common.primitives.Bytes;
-import com.google.common.primitives.Chars;
-import com.sun.xml.internal.fastinfoset.util.CharArray;
+import c.KPM;
 import sun.nio.cs.ArrayDecoder;
 
-import java.lang.reflect.Array;
-import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.regex.Pattern;
+
+import static java.lang.System.out;
 
 /**
  * Created by Administrator on 2016/12/27 0027.
@@ -213,44 +210,38 @@ public class ByteArrayLexer {
     private static int scale(int len, float expansionFactor) {
         // We need to perform double, not float, arithmetic; otherwise
         // we lose low order bits when len is larger than 2**24.
-        return (int)(len * (double)expansionFactor);
+        return (int) (len * (double) expansionFactor);
     }
+
     public static void main(String[] args) throws Exception {
         byte[] data = "select a from b ".getBytes(StandardCharsets.UTF_8);
         int sum = 0;
         CharsetDecoder cd = StandardCharsets.UTF_8.newDecoder();
         int en = scale(data.length, cd.maxCharsPerByte());
         char[] ca = new char[8192];
-        ArrayDecoder ad=(ArrayDecoder) cd;
+        ArrayDecoder ad = (ArrayDecoder) cd;
         long start = System.currentTimeMillis();
         for (int i = 0; i < 10000 * 10000; i++) {
-           // int clen = ad.decode(data, 0, data.length, ca);
-           // sum += new String(data,StandardCharsets.UTF_8).length();//5700
-           int c= ad.decode(data, 0, data.length, ca);
-            sum +=c ;//2800
+            // int clen = ad.decode(data, 0, data.length, ca);
+            // sum += new String(data,StandardCharsets.UTF_8).length();//5700
+            int c = ad.decode(data, 0, data.length, ca);
+            sum += c;//2800
         }
-        System.out.println(sum + "  " + String.valueOf(System.currentTimeMillis() - start));
+        out.println(sum + "  " + String.valueOf(System.currentTimeMillis() - start));
 
-//        byte[][] keywords = new byte[2][];
-//        byte[][] skip = new byte[1][];
-//        keywords[0] = "select".getBytes();
-//        keywords[1] = "from".getBytes();
-//        skip[0] = " ".getBytes();
-//        ByteArrayLexer lexer = ByteArrayLexer.of(data, 0, 0, keywords, skip);
-//        out.println(Arrays.toString(lexer.token()));
-//        lexer.next();
-//        out.println(Arrays.toString(lexer.stringVal()));
-//        out.println(Arrays.toString(lexer.token()));
-//        lexer.next();
-//        out.println(Arrays.toString(lexer.stringVal()));
-        //  out.println(Arrays.toString(Lexer.SELECT(data,0,data.length)));
-//        TemplateLoader loader = new ClassPathTemplateLoader();
-//
-//        Handlebars handlebars = new Handlebars(loader);
-//
-//        Template template = handlebars.compile("tmp.hbs");
-//
-//        System.out.println(template.apply("Handlebars.java"));
+        byte[][] keywords = new byte[2][];
+        byte[][] skip = new byte[1][];
+        keywords[0] = "select".getBytes();
+        keywords[1] = "from".getBytes();
+        skip[0] = " ".getBytes();
+        ByteArrayLexer lexer = ByteArrayLexer.of(data, 0, 0, keywords, skip);
+        out.println(Arrays.toString(lexer.token()));
+        lexer.next();
+        out.println(Arrays.toString(lexer.stringVal()));
+        out.println(Arrays.toString(lexer.token()));
+        lexer.next();
+        out.println(Arrays.toString(lexer.stringVal()));
+        //  out.println(Arrays.toString(c.Lexer.SELECT(data,0,data.length)));
 
     }
 }
