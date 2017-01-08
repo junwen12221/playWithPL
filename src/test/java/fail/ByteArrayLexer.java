@@ -1,3 +1,5 @@
+package fail;
+
 import c.KPM;
 import sun.nio.cs.ArrayDecoder;
 

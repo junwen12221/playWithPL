@@ -1,4 +1,4 @@
-package c;
+package example;
 
 
 
@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 //http://dev.mysql.com/doc/refman/5.7/en/identifiers.html 表名命名标准
 
-public class SQLParse <Int extends Integer>{
+public class SQLParse {
 
     static final byte CHAR_A = 0x41;
     static final byte CHAR_B = 0x42;
